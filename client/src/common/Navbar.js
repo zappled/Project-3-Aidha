@@ -1,11 +1,12 @@
 import React from "react";
-import logo from "/assets/aidha-logo.png";
+import logo from "../assets/aidha-logo.png";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
     <>
-      <div className="navbar">
-        <div className="nav-logo">
+      <div className={styles.navbar}>
+        <div className={styles.navlogo}>
           <img src={logo} alt="logo" />
         </div>
         {/* about us tab */}
@@ -13,7 +14,10 @@ const Navbar = () => {
           <button
             aria-haspopup="true"
             aria-controls="menu"
-            className="outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32 nav-label"
+            className={
+              ("outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32",
+              styles.navlabel)
+            }
           >
             <span className="pr-1 font-semibold flex-1">About</span>
           </button>
@@ -78,7 +82,10 @@ const Navbar = () => {
           <button
             aria-haspopup="true"
             aria-controls="menu"
-            className="outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32 nav-label"
+            className={
+              ("outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32",
+              styles.navlabel)
+            }
           >
             <span className="pr-1 font-semibold flex-1">For Students</span>
           </button>
@@ -228,7 +235,10 @@ const Navbar = () => {
           <button
             aria-haspopup="true"
             aria-controls="menu"
-            className="outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32 nav-label"
+            className={
+              ("outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32",
+              styles.navlabel)
+            }
           >
             <span className="pr-1 font-semibold flex-1">For Employers</span>
           </button>
@@ -255,7 +265,10 @@ const Navbar = () => {
           <button
             aria-haspopup="true"
             aria-controls="menu"
-            className="outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32 nav-label"
+            className={
+              ("outline-none focus:outline-none px-3 py-1 bg-white flex items-center min-w-32",
+              styles.navlabel)
+            }
           >
             <span className="pr-1 font-semibold flex-1">Get Involved</span>
           </button>
@@ -314,7 +327,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="nav-search"></div>
+        <div className={styles.navsearch}>
+          <div className={styles.searchbar}>Search bar goes here</div>
+        </div>
       </div>
     </>
   );
