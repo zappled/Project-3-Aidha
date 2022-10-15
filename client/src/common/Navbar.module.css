@@ -68,16 +68,14 @@
   display: flex;
   width: 20vw;
   text-align: center;
+  justify-content: center;
+  color: #6f706f;
+  font-size: 2em;
+  padding-left: 3vw;
 }
 
-.searchbar {
-  display: flex;
-  width: 80%;
-  height: 70%;
-  background-color: red;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+.emoji {
+  line-height: 59px;
   text-align: center;
+  justify-content: center;
 }
