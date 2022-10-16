@@ -68,6 +68,17 @@
   display: flex;
   width: 20vw;
   text-align: center;
+
+  justify-content: center;
+  color: #6f706f;
+  font-size: 2em;
+  padding-left: 3vw;
+}
+
+.emoji {
+  line-height: 59px;
+  text-align: center;
+  justify-content: center;
 }
 
 .searchbar {
