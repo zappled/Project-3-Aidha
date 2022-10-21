@@ -4,6 +4,7 @@ import { CCarouselItem } from "@coreui/react";
 import { CCarouselCaption } from "@coreui/react";
 import { CImage } from "@coreui/react";
 import Navbar from "../common/Navbar";
+import Footer from "../common/Footer";
 import bannerOne from ".././assets/homepage/homepage_banner.png";
 import bannerTwo from ".././assets/homepage/homepage_banner2.jpeg";
 import bannerThree from ".././assets/homepage/homepage_banner3.png";
@@ -35,10 +36,10 @@ const Homepage = () => {
               alt="slide 1"
             />
             <CCarouselCaption className="d-none d-md-block banner_label">
-              <p>
+              <span>
                 Aidha helps migrant domestic workers achieve economic
                 independence through financial education.
-              </p>
+              </span>
             </CCarouselCaption>
           </CCarouselItem>
           <CCarouselItem>
@@ -48,10 +49,10 @@ const Homepage = () => {
               alt="slide 2"
             />
             <CCarouselCaption className="d-none d-md-block banner_label">
-              <p>
+              <span>
                 Aidha helps migrant domestic workers achieve economic
                 independence through financial education.
-              </p>
+              </span>
             </CCarouselCaption>
           </CCarouselItem>
           <CCarouselItem>
@@ -61,10 +62,10 @@ const Homepage = () => {
               alt="slide 3"
             />
             <CCarouselCaption className="d-none d-md-block banner_label">
-              <p>
+              <span>
                 Aidha helps migrant domestic workers achieve economic
                 independence through financial education.
-              </p>
+              </span>
             </CCarouselCaption>
           </CCarouselItem>
         </CCarousel>
@@ -74,7 +75,7 @@ const Homepage = () => {
         <div className="content_box" style={{ marginTop: "3vh" }}>
           <div className="content">
             <div className="content_image">
-              <img src={contentImgOne} />
+              <img src={contentImgOne} alt="" />
             </div>
             <div className="content_button"></div>
             <div className="button_label">Hear Our Stories</div>
@@ -84,7 +85,7 @@ const Homepage = () => {
           </div>
           <div className="content">
             <div className="content_image">
-              <img src={contentImgTwo} />
+              <img src={contentImgTwo} alt="" />
             </div>
             <div className="content_button"></div>
             <div className="button_label">Available Courses</div>
@@ -96,7 +97,7 @@ const Homepage = () => {
         <div className="content_box">
           <div className="content">
             <div className="content_image">
-              <img src={contentImgThree} />
+              <img src={contentImgThree} alt="" />
             </div>
             <div className="content_button"></div>
             <div className="button_label">
@@ -108,7 +109,7 @@ const Homepage = () => {
           </div>
           <div className="content">
             <div className="content_image">
-              <img src={contentImgFour} />
+              <img src={contentImgFour} alt="" />
             </div>
             <div className="content_button"></div>
             <div className="button_label">
@@ -122,7 +123,7 @@ const Homepage = () => {
         <div className="content_box">
           <div className="content">
             <div className="content_image">
-              <img src={contentImgFive} />
+              <img src={contentImgFive} alt="" />
             </div>
             <div className="content_button"></div>
             <div className="button_label">
@@ -135,6 +136,7 @@ const Homepage = () => {
           <div className="content"></div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
