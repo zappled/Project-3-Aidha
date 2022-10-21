@@ -1,10 +1,61 @@
+* {
+  font-family: Roboto;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
-  box-sizing: border-box;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.page_container {
+  margin-top: -10px;
+}
+
+.page_header {
+  width: 100vw;
+  height: 30px;
+  background-color: #f68121;
+  color: #ffffff;
+  line-height: 32px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.page_header span {
+  margin-left: 3.5vw;
+}
+
+.banner {
+  object-fit: cover;
+  height: 60vh;
+  z-index: -1;
+}
+
+.banner_label p {
+  font-family: Roboto;
+  font-weight: 700;
+  width: 50vw;
+  background-color: #f68121;
+  color: #ffffff;
+  padding: 10px;
+  text-align: left;
+  position: absolute;
+  left: -15vw;
+  top: -10vh;
+}
+
+.carousel-indicators:active {
+  background-color: #f68121;
+}
+
+.carousel li {
+  background-color: red;
+  height: 50px;
+  width: 50px;
 }
