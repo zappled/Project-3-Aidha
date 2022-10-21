@@ -30,6 +30,10 @@
   color: #ffffff;
 }
 
+/* .navbar li:hover ~ .navlabel {
+  background-color: #f68121;
+} */
+
 .navbar {
   position: relative;
   display: inline-flex;

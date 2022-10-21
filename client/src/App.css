@@ -5,6 +5,7 @@
 
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
 
 @media (prefers-reduced-motion: no-preference) {
