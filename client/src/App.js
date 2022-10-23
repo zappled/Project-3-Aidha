@@ -11,6 +11,7 @@ import Footer from "./common/Footer";
 import Courses from "./pages/mdw/Courses";
 import SignUpPage from "./pages/mdw/SignUpPage";
 import StudentStories from "./pages/mdw/StudentStories";
+import VolunteerWithUs from "./pages/volunteer/VolunteerWithUs";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
         />
         <Route path="/volunteers" element={<GetInvolved />} />
         <Route path="/students/stories" element={<StudentStories />} />
+        <Route
+          path="/volunteers/volunteer_with_us"
+          element={<VolunteerWithUs />}
+        />
       </Routes>
       <Footer />
     </>
@@ -46,6 +51,10 @@ function App() {
           <Route path="students/courses/sign_up" element={<SignUpPage />} />
           {/* Volunteers User Flow */}
           <Route path="/volunteers" element={<GetInvolved />} />
+          <Route
+            path="/volunteers/volunteer_with_us"
+            element={<VolunteerWithUs />}
+          />
         </Routes>
         <Footer />
       </>
