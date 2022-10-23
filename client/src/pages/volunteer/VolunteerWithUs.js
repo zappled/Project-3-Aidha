@@ -136,6 +136,7 @@ const VolunteerWithUs = () => {
           </div>
         </div>
       </div>
+
       {/* carousel to scroll through various mentor roles */}
       <div className={styles.carousel_container}>
         <span className={styles.related_courses}>Available Roles</span>
@@ -156,6 +157,11 @@ const VolunteerWithUs = () => {
               <img src={bannerTwo} alt="" />
             </div>
             {/* first carousel item content body */}
+              <span>Mentor (Module 1, 2 or 3)</span>
+            </div>
+            <div className={styles.content_image}>
+              <img src={bannerTwo} alt="" />
+            </div>
             <div className={styles.content_button}>
               <div>
                 <span>Time Commitment</span>
@@ -197,6 +203,11 @@ const VolunteerWithUs = () => {
               <img src={bannerThree} alt="" />
             </div>
             {/* second carousel item content body */}
+              <span>Mentor (Computer Classes)</span>
+            </div>
+            <div className={styles.content_image}>
+              <img src={bannerThree} alt="" />
+            </div>
             <div className={styles.content_button}>
               <div>
                 <span>Time Commitment</span>
@@ -240,6 +251,12 @@ const VolunteerWithUs = () => {
               <img src={bannerFour} alt="" />
             </div>
             {/* third carousel item content body */}
+            <div className={styles.content_label}>
+              <span>Mentor (Improve Your English)</span>
+            </div>
+            <div className={styles.content_image}>
+              <img src={bannerFour} alt="" />
+            </div>
             <div className={styles.content_button}>
               <div>
                 <span>Time Commitment</span>
@@ -282,6 +299,12 @@ const VolunteerWithUs = () => {
               <img src={bannerFive} alt="" />
             </div>
             {/* fourth carousel item content body */}
+            <div className={styles.content_label}>
+              <span>Tech Support</span>
+            </div>
+            <div className={styles.tech_support}>
+              <img src={bannerFive} alt="" />
+            </div>
             <div className={styles.content_button}>
               <div>
                 <span>Time Commitment</span>

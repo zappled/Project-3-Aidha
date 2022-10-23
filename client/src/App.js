@@ -34,8 +34,24 @@ function App() {
       <Footer />
     </>
   );
+//   return (
+//     <>
+//       <Navbar />
+//       <Routes>
+//         <Route path="/" element={<Homepage />} />
+//         <Route path="/students/courses" element={<Courses />} />
+//         <Route
+//           path="/students/courses/financial_education"
+//           element={<CourseInfo />}
+//         />
+//         <Route path="/volunteers" element={<GetInvolved />} />
+//         <Route path="/students/stories" element={<StudentStories />} />
+//       </Routes>
+//       <Footer />
+//     </>
+//   );
 
-  function App() {
+//   function App() {
     return (
       <>
         <Navbar />
@@ -59,7 +75,7 @@ function App() {
         <Footer />
       </>
     );
-  }
+//   }
 }
 
 export default App;
