@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CCarousel } from "@coreui/react";
 import { CCarouselItem } from "@coreui/react";
 import { CCarouselCaption } from "@coreui/react";
@@ -13,9 +13,24 @@ import contentImgTwo from ".././assets/homepage/0_2_financial_planning.png";
 import contentImgThree from ".././assets/homepage/0_3_make_a_change.png";
 import contentImgFour from ".././assets/homepage/0_4_ride_for_aidha.png";
 import contentImgFive from ".././assets/homepage/0_5_aidha_photography.png";
-import { Link } from "react-router-dom";
+import languageObj from "../assets/languages/pages/homepageLanguages";
 
 const Homepage = () => {
+  const [language, setLanguage] = useState("en");
+  const [languageText, setLanguageText] = useState(languageObj.en);
+
+  useEffect(() => {
+    switch (language) {
+      case "bu":
+        console.log(languageObj.bu);
+        setLanguageText(languageObj.bu);
+        break;
+      default:
+        console.log(languageObj.en);
+        setLanguageText(languageObj.en);
+    }
+  }, [language]);
+
   return (
     <>
       <div className="page_container">
@@ -34,10 +49,7 @@ const Homepage = () => {
             />
             {/* caption for first image with orange background */}
             <CCarouselCaption className="d-none d-md-block banner_label">
-              <span>
-                Aidha helps migrant domestic workers achieve economic
-                independence through financial education.
-              </span>
+              <span>{languageText.carousel.a}</span>
             </CCarouselCaption>
           </CCarouselItem>
           {/* second carousel image */}
@@ -49,10 +61,7 @@ const Homepage = () => {
             />
             {/* caption for second image */}
             <CCarouselCaption className="d-none d-md-block banner_label">
-              <span>
-                Aidha helps migrant domestic workers achieve economic
-                independence through financial education.
-              </span>
+              <span>{languageText.carousel.b}</span>
             </CCarouselCaption>
           </CCarouselItem>
           {/* third carousel image */}
@@ -64,10 +73,7 @@ const Homepage = () => {
             />
             {/* caption for third image */}
             <CCarouselCaption className="d-none d-md-block banner_label">
-              <span>
-                Aidha helps migrant domestic workers achieve economic
-                independence through financial education.
-              </span>
+              <span>{languageText.carousel.c}</span>
             </CCarouselCaption>
           </CCarouselItem>
         </CCarousel>
@@ -85,9 +91,10 @@ const Homepage = () => {
             {/* button_label to become navigation link */}
             <div className="button_label">
               <span>Hear Our Stories</span>
-            </div>
+            </div>{" "}
+            <div className="button_label">{languageText.contentOne.a}</div>
             <div className="content_label">
-              <span>FOR STUDENTS</span>
+              <span>{languageText.contentOne.b}</span>
             </div>
           </div>
           {/* second content element */}
@@ -100,8 +107,9 @@ const Homepage = () => {
             <div className="button_label">
               <span>Available Courses</span>
             </div>
+            <div className="button_label">{languageText.contentTwo.a}</div>
             <div className="content_label">
-              <span>FOR STUDENTS</span>
+              <span>{languageText.contentTwo.b}</span>
             </div>
           </div>
         </div>
@@ -114,10 +122,10 @@ const Homepage = () => {
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
             <div className="button_label">
-              <span>Make A Difference Today</span>
+              <span>{languageText.contentThree.a}</span>
             </div>
             <div className="content_label">
-              <span>GET INVOLVED</span>
+              <span>{languageText.contentThree.b}</span>
             </div>
           </div>
           {/* fourth content element */}
@@ -128,10 +136,10 @@ const Homepage = () => {
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
             <div className="button_label">
-              <span>Ride For Aidha OCBC 2022</span>
+              <span>{languageText.contentFour.a}</span>
             </div>
             <div className="content_label">
-              <span>EVENTS</span>
+              <span>{languageText.contentFour.b}</span>
             </div>
           </div>
         </div>
@@ -144,10 +152,10 @@ const Homepage = () => {
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
             <div className="button_label">
-              <span>Aidha Photography Competition 2022</span>
+              <span>{languageText.contentFive.a}</span>
             </div>
             <div className="content_label">
-              <span>EVENTS</span>
+              <span>{languageText.contentFive.b}</span>
             </div>
           </div>
           <div className="content"></div>
