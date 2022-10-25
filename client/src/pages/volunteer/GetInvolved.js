@@ -9,6 +9,7 @@ import bannerThree from "../../assets/volunteer_pages/getinvolved_01c_banner.png
 import bannerFour from "../../assets/volunteer_pages/getinvolved_01d_banner.png";
 import Partners from "../../components/volunteer/Partners";
 import ReachImpact from "../../components/volunteer/ReachImpact";
+import VolunteerDonate from "../../components/volunteer/VolunteerDonate";
 
 const GetInvolved = () => {
   return (
@@ -30,6 +31,7 @@ const GetInvolved = () => {
               className="d-block w-100 banner"
               src={bannerOne}
               alt="slide 1"
+              style={{ objectPosition: "20% 10%" }}
             />
             {/* caption for first image with orange background */}
             <CCarouselCaption className="d-none d-md-block banner_label">
@@ -84,6 +86,7 @@ const GetInvolved = () => {
       </div>
       <ReachImpact />
       <Partners />
+      <VolunteerDonate />
     </>
   );
 };

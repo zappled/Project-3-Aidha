@@ -9,9 +9,12 @@ import GetInvolved from "./pages/volunteer/GetInvolved";
 import Navbar from "./common/Navbar";
 import Footer from "./common/Footer";
 import Courses from "./pages/mdw/Courses";
-import SignUpPage from "./pages/mdw/SignUpPage";
+import MDWSignUpPage from "./pages/mdw/MDWSignUpPage";
 import StudentStories from "./pages/mdw/StudentStories";
 import VolunteerWithUs from "./pages/volunteer/VolunteerWithUs";
+import SignUpConfirmation from "./components/volunteer/SignUpConfirmation";
+import VolunteerDetails from "./pages/volunteer/VolunteerDetails";
+import VolunteerSignUpPage from "./pages/volunteer/VolunteerSignUpPage";
 
 function App() {
   return (
@@ -19,63 +22,37 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        {/* MDW User Flow */}
+        <Route path="/students/stories" element={<StudentStories />} />
         <Route path="/students/courses" element={<Courses />} />
         <Route
           path="/students/courses/financial_education"
           element={<CourseInfo />}
         />
+        <Route path="students/courses/sign_up" element={<MDWSignUpPage />} />
+        {/* Volunteers User Flow */}
         <Route path="/volunteers" element={<GetInvolved />} />
-        <Route path="/students/stories" element={<StudentStories />} />
         <Route
           path="/volunteers/volunteer_with_us"
           element={<VolunteerWithUs />}
+        />
+        <Route
+          path="/volunteers/volunteer_with_us/details"
+          element={<VolunteerDetails />}
+        />
+        {/* To remove below once volunteer pages are up, this is currently for development purpose only */}
+        <Route
+          path="/volunteers/volunteer_with_us/sign_up"
+          element={<VolunteerSignUpPage />}
+        />
+        <Route
+          path="/volunteers/volunteer_with_us/sign_up/confirmation"
+          element={<SignUpConfirmation />}
         />
       </Routes>
       <Footer />
     </>
   );
-//   return (
-//     <>
-//       <Navbar />
-//       <Routes>
-//         <Route path="/" element={<Homepage />} />
-//         <Route path="/students/courses" element={<Courses />} />
-//         <Route
-//           path="/students/courses/financial_education"
-//           element={<CourseInfo />}
-//         />
-//         <Route path="/volunteers" element={<GetInvolved />} />
-//         <Route path="/students/stories" element={<StudentStories />} />
-//       </Routes>
-//       <Footer />
-//     </>
-//   );
-
-//   function App() {
-    return (
-      <>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          {/* MDW User Flow */}
-          <Route path="students/courses/stories" element={<StudentStories />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route
-            path="/students/courses/financial_education"
-            element={<CourseInfo />}
-          />
-          <Route path="students/courses/sign_up" element={<SignUpPage />} />
-          {/* Volunteers User Flow */}
-          <Route path="/volunteers" element={<GetInvolved />} />
-          <Route
-            path="/volunteers/volunteer_with_us"
-            element={<VolunteerWithUs />}
-          />
-        </Routes>
-        <Footer />
-      </>
-    );
-//   }
 }
 
 export default App;

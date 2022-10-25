@@ -44,8 +44,8 @@ const SignUpForm = (props) => {
 		setAboutYourselfCount(e.target.value.length);
 	};
 
-	const handlePrivacyPolicyAgreedUpdate = () => {
-		setPrivacyPolicyAgreed((prev) => !prev);
+	const handlePrivacyPolicyAgreedUpdate = (e) => {
+		setPrivacyPolicyAgreed(e.target.checked);
 	};
 
 	const handleFormSubmission = () => {
@@ -57,10 +57,15 @@ const SignUpForm = (props) => {
 			courseDate,
 			aboutYourself,
 			privacyPolicyAgreed,
-		};
-
-		// Lifts form details from user to parent, SignUpStep1
-		props.handleFormSubmissionInStep1(formSubmitted);
+        };
+        
+        // Check all form fields have values before proceeding to lift from child to parent
+        if (formSubmitted.name && formSubmitted.phone && formSubmitted.workPermit && formSubmitted.courseDate && formSubmitted.aboutYourself && formSubmitted.privacyPolicyAgreed) {
+            props.handleFormSubmissionInStep1(formSubmitted);  
+        } else {
+            window.alert("Please complete all fields before you proceed to submit the form.");
+        }
+		
 	};
 
 	return (
@@ -97,7 +102,7 @@ const SignUpForm = (props) => {
 								Select a Course Date
 							</label>
 							<select className={styles.courseDateInput} required name="coursedate" id="coursedate" onChange={handleCourseDateUpdate} value={courseDate}>
-								<option selected disabled></option>
+								<option value="" disabled></option>
 								<option value="9 October 2022, 10am - 1pm">9 October 2022, 10am - 1pm</option>
 								<option value="9 October 2022, 2pm - 5pm">9 October 2022, 2pm - 5pm</option>
 								<option value="20 November 2022, 10am - 1pm">20 November 2022, 10am - 1pm</option>
@@ -133,7 +138,7 @@ const SignUpForm = (props) => {
 								name="privacyPolicy"
 								id="privacyPolicy"
 								value="privacyPolicyAgreedByUser"
-								onClick={handlePrivacyPolicyAgreedUpdate}
+								onChange={handlePrivacyPolicyAgreedUpdate}
 								checked={privacyPolicyAgreed}
 							/>
 							<label className={styles.privacyPolicyLabel} htmlFor="privacyPolicy">

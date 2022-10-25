@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import { CCarousel } from "@coreui/react";
 import { CCarouselItem } from "@coreui/react";
@@ -11,17 +13,12 @@ import contentImgTwo from ".././assets/homepage/0_2_financial_planning.png";
 import contentImgThree from ".././assets/homepage/0_3_make_a_change.png";
 import contentImgFour from ".././assets/homepage/0_4_ride_for_aidha.png";
 import contentImgFive from ".././assets/homepage/0_5_aidha_photography.png";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
     <>
       <div className="page_container">
-        {/* page_header shows current page navigation */}
-        <div className="page_header">
-          <span>
-            Shows which page you are currently on *to be removed from homepage*
-          </span>
-        </div>
         {/* carousel for banner image, transitions between 3 different images */}
         <CCarousel
           indicators
