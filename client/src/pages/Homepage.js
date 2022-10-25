@@ -83,7 +83,9 @@ const Homepage = () => {
             </div>
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
-            <div className="button_label">Hear Our Stories</div>
+            <div className="button_label">
+              <span>Hear Our Stories</span>
+            </div>
             <div className="content_label">
               <span>FOR STUDENTS</span>
             </div>
@@ -95,7 +97,9 @@ const Homepage = () => {
             </div>
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
-            <div className="button_label">Available Courses</div>
+            <div className="button_label">
+              <span>Available Courses</span>
+            </div>
             <div className="content_label">
               <span>FOR STUDENTS</span>
             </div>
