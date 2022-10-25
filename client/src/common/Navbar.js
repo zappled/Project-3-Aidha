@@ -103,8 +103,13 @@ const Navbar = () => {
   };
 
   //   function changes language menu state, which toggles its visibility
-  const setLanguageMenu = () => {
-    if (showLanguageMenu == "none") {
+  const setLanguageMenu = (e) => {
+    //if statement as only span in the dropdown has id
+    if (e.target.id) {
+      //for language setting
+      ctx.setLanguage(e.target.id);
+    }
+    if (showLanguageMenu === "none") {
       setShowLanguageMenu("block");
       setShowMobileMenu("none");
     } else {
@@ -285,14 +290,18 @@ const Navbar = () => {
             🇸🇬
           </span>
           {/* change this onClick to toggle English language */}
-          <span onClick={setLanguageMenu}>English</span>
+          <span id="en" onClick={setLanguageMenu}>
+            English
+          </span>
           <br />
           <span className={styles.emoji} aria-label="my-flag">
             {" "}
             🇲🇲
           </span>
           {/* change this onClick to toggle Burmese language */}
-          <span onClick={setLanguageMenu}>မြန်မာဘာသာ</span>
+          <span id="bu" onClick={setLanguageMenu}>
+            မြန်မာဘာသာ
+          </span>
         </div>
 
         {/* students tab */}
