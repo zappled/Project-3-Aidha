@@ -10,20 +10,20 @@ import TelegramIcon from "../assets/footer/footer_5_telegram.png";
 import WhatsappIcon from "../assets/footer/footer_6_whatsapp.png";
 
 import languageObj from "../assets/languages/common/footerLanguages";
-
+import ContextStorage from "../context/context";
 const Footer = () => {
-  const [language, setLanguage] = useState("en");
+  const ctx = useContext(ContextStorage);
   const [languageText, setLanguageText] = useState(languageObj.en);
 
   useEffect(() => {
-    switch (language) {
+    switch (ctx.language) {
       case "bu":
         setLanguageText(languageObj.bu);
         break;
       default:
         setLanguageText(languageObj.en);
     }
-  }, [language]);
+  }, [ctx.language]);
 
   return (
     // Container for entire footer, horizontal margin, bg-color & text color set via tailwind

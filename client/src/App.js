@@ -3,6 +3,7 @@
 import "./App.css";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Homepage from "./pages/Homepage";
 import CourseInfo from "./pages/mdw/CourseInfo";
 import GetInvolved from "./pages/volunteer/GetInvolved";
@@ -14,8 +15,11 @@ import StudentStories from "./pages/mdw/StudentStories";
 import VolunteerWithUs from "./pages/volunteer/VolunteerWithUs";
 import VolunteerDetails from "./pages/volunteer/VolunteerDetails";
 import VolunteerSignUpPage from "./pages/volunteer/VolunteerSignUpPage";
+import ContextStorage from "./context/context";
 
 function App() {
+  const [language, setLanguage] = useState("en");
+
   return (
     <>
       <ContextStorage.Provider value={{ language, setLanguage }}>

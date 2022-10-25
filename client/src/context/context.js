@@ -1,5 +1,5 @@
 import React from "react";
 
-const contextStorage = React.createContext();
+const ContextStorage = React.createContext();
 
-export default contextStorage;
+export default ContextStorage;
