@@ -12,7 +12,6 @@ import Courses from "./pages/mdw/Courses";
 import MDWSignUpPage from "./pages/mdw/MDWSignUpPage";
 import StudentStories from "./pages/mdw/StudentStories";
 import VolunteerWithUs from "./pages/volunteer/VolunteerWithUs";
-import SignUpConfirmation from "./components/volunteer/SignUpConfirmation";
 import VolunteerDetails from "./pages/volunteer/VolunteerDetails";
 import VolunteerSignUpPage from "./pages/volunteer/VolunteerSignUpPage";
 
@@ -44,10 +43,6 @@ function App() {
         <Route
           path="/volunteers/volunteer_with_us/sign_up"
           element={<VolunteerSignUpPage />}
-        />
-        <Route
-          path="/volunteers/volunteer_with_us/sign_up/confirmation"
-          element={<SignUpConfirmation />}
         />
       </Routes>
       <Footer />
