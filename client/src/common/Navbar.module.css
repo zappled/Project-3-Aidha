@@ -162,6 +162,7 @@
     height: 100%;
     width: 22vw;
     margin: 0 auto;
+    margin-left: 2vw;
     justify-content: center;
   }
 
@@ -169,7 +170,7 @@
     display: flex;
     position: absolute;
     justify-content: space-between;
-    right: 0vw;
+    right: 2vw;
     width: 37vw;
   }
 
