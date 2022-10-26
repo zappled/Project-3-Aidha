@@ -27,13 +27,17 @@ const Navbar = () => {
   const ctx = useContext(ContextStorage);
   const [languageText, setLanguageText] = useState(languageObj.en);
 
+  const [countryFlag, setCountryFlag] = useState("🇸🇬");
+
   useEffect(() => {
     switch (ctx.language) {
       case "bu":
         setLanguageText(languageObj.bu);
+        setCountryFlag("🇲🇲");
         break;
       default:
         setLanguageText(languageObj.en);
+        setCountryFlag("🇸🇬");
     }
   }, [ctx.language]);
 
@@ -254,12 +258,18 @@ const Navbar = () => {
               {languageText.forStudents.c}
             </div>
           </Link>
-          <div
-            className={styles.nestedButton}
-            style={{ display: showStudentsNestedMenu }}
+          <Link
+            to="/students/stories"
+            style={{ textDecoration: "none", color: "#2C384AF2" }}
           >
-            {languageText.stories.a}
-          </div>
+            <div
+              className={styles.nestedButton}
+              style={{ display: showStudentsNestedMenu }}
+              onClick={mobileMenu}
+            >
+              {languageText.stories.a}
+            </div>
+          </Link>
           <div
             className={styles.mobileButton}
             style={{ display: hideOtherButtons }}
@@ -286,7 +296,6 @@ const Navbar = () => {
           style={{ display: showLanguageMenu }}
         >
           <span className={styles.emoji} aria-label="sg-flag">
-            {" "}
             🇸🇬
           </span>
           {/* change this onClick to toggle English language */}
@@ -631,8 +640,7 @@ const Navbar = () => {
             aria-label="sg-flag"
             onClick={setLanguageMenu}
           >
-            {" "}
-            🇸🇬
+            {countryFlag}
           </span>
           <span
             className="material-icons"
