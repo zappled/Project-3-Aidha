@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CCarousel } from "@coreui/react";
 import { CCarouselItem } from "@coreui/react";
 import { CCarouselCaption } from "@coreui/react";
@@ -13,9 +13,24 @@ import contentImgTwo from ".././assets/homepage/0_2_financial_planning.png";
 import contentImgThree from ".././assets/homepage/0_3_make_a_change.png";
 import contentImgFour from ".././assets/homepage/0_4_ride_for_aidha.png";
 import contentImgFive from ".././assets/homepage/0_5_aidha_photography.png";
+import languageObj from "../assets/languages/pages/homepageLanguages";
 import { Link } from "react-router-dom";
+import ContextStorage from "../context/context";
 
 const Homepage = () => {
+  const ctx = useContext(ContextStorage);
+  const [languageText, setLanguageText] = useState(languageObj.en);
+
+  useEffect(() => {
+    switch (ctx.language) {
+      case "bu":
+        setLanguageText(languageObj.bu);
+        break;
+      default:
+        setLanguageText(languageObj.en);
+    }
+  }, [ctx.language]);
+
   return (
     <>
       <div className="page_container">
@@ -33,11 +48,8 @@ const Homepage = () => {
               alt="slide 1"
             />
             {/* caption for first image with orange background */}
-            <CCarouselCaption className="d-none d-md-block banner_label">
-              <span>
-                Aidha helps migrant domestic workers achieve economic
-                independence through financial education.
-              </span>
+            <CCarouselCaption className="d-md-block banner_label">
+              <span>{languageText.carousel.a}</span>
             </CCarouselCaption>
           </CCarouselItem>
           {/* second carousel image */}
@@ -48,11 +60,8 @@ const Homepage = () => {
               alt="slide 2"
             />
             {/* caption for second image */}
-            <CCarouselCaption className="d-none d-md-block banner_label">
-              <span>
-                Aidha helps migrant domestic workers achieve economic
-                independence through financial education.
-              </span>
+            <CCarouselCaption className="d-md-block banner_label">
+              <span>{languageText.carousel.b}</span>
             </CCarouselCaption>
           </CCarouselItem>
           {/* third carousel image */}
@@ -63,11 +72,8 @@ const Homepage = () => {
               alt="slide 3"
             />
             {/* caption for third image */}
-            <CCarouselCaption className="d-none d-md-block banner_label">
-              <span>
-                Aidha helps migrant domestic workers achieve economic
-                independence through financial education.
-              </span>
+            <CCarouselCaption className="d-md-block banner_label">
+              <span>{languageText.carousel.c}</span>
             </CCarouselCaption>
           </CCarouselItem>
         </CCarousel>
@@ -83,9 +89,16 @@ const Homepage = () => {
             </div>
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
-            <div className="button_label">Hear Our Stories</div>
+            <Link
+              to="/students/stories"
+              style={{ textDecoration: "none", color: "#ffffff" }}
+            >
+              <div className="button_label">
+                <span>{languageText.contentOne.a}</span>
+              </div>
+            </Link>
             <div className="content_label">
-              <span>FOR STUDENTS</span>
+              <span>{languageText.contentOne.b}</span>
             </div>
           </div>
           {/* second content element */}
@@ -95,9 +108,16 @@ const Homepage = () => {
             </div>
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
-            <div className="button_label">Available Courses</div>
+            <Link
+              to="/students/courses"
+              style={{ textDecoration: "none", color: "#ffffff" }}
+            >
+              <div className="button_label">
+                <span>{languageText.contentTwo.a}</span>
+              </div>
+            </Link>
             <div className="content_label">
-              <span>FOR STUDENTS</span>
+              <span>{languageText.contentTwo.b}</span>
             </div>
           </div>
         </div>
@@ -110,10 +130,10 @@ const Homepage = () => {
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
             <div className="button_label">
-              <span>Make A Difference Today</span>
+              <span>{languageText.contentThree.a}</span>
             </div>
             <div className="content_label">
-              <span>GET INVOLVED</span>
+              <span>{languageText.contentThree.b}</span>
             </div>
           </div>
           {/* fourth content element */}
@@ -124,10 +144,10 @@ const Homepage = () => {
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
             <div className="button_label">
-              <span>Ride For Aidha OCBC 2022</span>
+              <span>{languageText.contentFour.a}</span>
             </div>
             <div className="content_label">
-              <span>EVENTS</span>
+              <span>{languageText.contentFour.b}</span>
             </div>
           </div>
         </div>
@@ -140,13 +160,13 @@ const Homepage = () => {
             <div className="content_button"></div>
             {/* button_label to become navigation link */}
             <div className="button_label">
-              <span>Aidha Photography Competition 2022</span>
+              <span>{languageText.contentFive.a}</span>
             </div>
             <div className="content_label">
-              <span>EVENTS</span>
+              <span>{languageText.contentFive.b}</span>
             </div>
           </div>
-          <div className="content"></div>
+          <div className="empty_content"></div>
         </div>
       </div>
     </>

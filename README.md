@@ -20,4 +20,3 @@ Shao Zhe, Ru Yi, Ian, Zi Hao
 
 - Create branch when making changes
 - Ensure no syntax errors
-- Check that files not within your scope have not been modified by accident

@@ -116,3 +116,165 @@
   transform: translateY(-50%);
   text-align: center;
 }
+
+#menuHamburger {
+  display: none;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.mobileButton {
+  display: none;
+}
+
+.languageMenu {
+  position: absolute;
+  width: 17vw;
+  height: 15vh;
+  background-color: #f68121;
+  color: #ffffff;
+  margin-top: 44px;
+  margin-left: 83vw;
+  font-weight: 700;
+}
+
+.languageMenu span {
+  margin-left: 1vw;
+  font-size: 1.1em;
+}
+
+.languageMenu span.emoji {
+  display: inline;
+  margin-left: 2.5vw;
+  font-size: 2.5vw;
+  margin-bottom: 2vw;
+}
+
+@media only screen and (max-width: 768px) {
+  .navlabel {
+    display: none;
+  }
+
+  .navbar ul {
+    display: none;
+    width: 17vw;
+    text-align: center;
+    justify-content: center;
+    background-color: #f68121;
+    border-radius: 0;
+    border-color: none;
+  }
+
+  .navbar li {
+    display: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 14px;
+    border-bottom: 4px solid;
+    border-color: #f68121;
+    background-color: #f68121;
+    border-radius: 0;
+  }
+
+  .navlogo {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 100%;
+    width: 22vw;
+    margin: 0 auto;
+    margin-left: 2vw;
+    justify-content: center;
+  }
+
+  .navsearch {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    right: 2vw;
+    width: 37vw;
+  }
+
+  .emoji {
+    font-size: 30px;
+    margin-right: 2.5vw;
+  }
+
+  #menuHamburger {
+    display: block;
+    padding-top: 1.25vw;
+    margin-right: 5vw;
+  }
+
+  #search {
+    position: relative;
+    padding-top: 1vw;
+    top: 1.5vw;
+    margin-right: 2.5vw;
+  }
+
+  .mobileMenu {
+    position: absolute;
+    display: block;
+    background-color: white;
+    width: 100vw;
+    height: 35vh;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 44px;
+  }
+
+  .mobileButton {
+    display: block;
+    width: 60vw;
+    height: 5vh;
+    background-color: #eee7df;
+    text-align: center;
+    margin-top: 5vw;
+    border-radius: 20px;
+    line-height: 5vh;
+    margin-left: 20vw;
+    font-weight: 700;
+  }
+
+  .mobileButton:active {
+    background-color: #f68121;
+    color: #ffffff;
+  }
+
+  .nestedButton {
+    display: block;
+    width: 60vw;
+    height: 5vh;
+    background-color: #eee7df;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+    line-height: 5vh;
+    margin-left: 20vw;
+    font-weight: 700;
+  }
+
+  .languageMenu {
+    position: absolute;
+    width: 100vw;
+    height: 15vh;
+    background-color: #ffffff;
+    margin-top: 44px;
+    margin-left: 0vw;
+    font-weight: 700;
+    font-size: 5vw;
+  }
+
+  .languageMenu span {
+    margin-left: 2.5vw;
+    font-size: 4vw;
+    color: #3c3d3c;
+  }
+
+  .languageMenu span.emoji {
+    margin-left: 2.5vw;
+    font-size: 7vw;
+  }
+}
