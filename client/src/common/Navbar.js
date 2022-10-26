@@ -266,6 +266,8 @@ const Navbar = () => {
               {languageText.stories.a}
             </div>
           </Link>
+            {languageText.stories.a}
+          </div>
           <div
             className={styles.mobileButton}
             style={{ display: hideOtherButtons }}

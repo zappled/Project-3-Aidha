@@ -394,9 +394,7 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    /* gap: 40px; */
-    flex-wrap: wrap;
-    margin-top: 1vh;
+    margin-top: -3vh;
   }
 
   .events {
@@ -432,11 +430,10 @@
     top: 0;
     display: block;
     position: relative;
-    left: -3.5vw;
-    width: 20vw;
+    left: -5vw;
+    width: 16vw;
     text-align: center;
     margin-top: 2vh;
-    line-height: 2.25vh;
   }
 
   .events_label div {
