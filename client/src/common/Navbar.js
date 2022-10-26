@@ -1,9 +1,11 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import logo from "../assets/aidha-logo.png";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
+import languageObj from "../assets/languages/common/NavbarLanguages";
+import ContextStorage from "../context/context";
 
 const Navbar = () => {
   // hover states and functions allow the parent navlabel to also be highlighted
@@ -13,6 +15,27 @@ const Navbar = () => {
   const [studentHoverState, setStudentHoverState] = useState({});
   const [employerHoverState, setEmployerHoverState] = useState({});
   const [volunteerHoverState, setVolunteerHoverState] = useState({});
+
+  const [showMobileMenu, setShowMobileMenu] = useState("none");
+  const [showStudentsNestedMenu, setShowStudentsNestedMenu] = useState("none");
+  const [hideOtherButtons, setHideOtherButtons] = useState("block");
+  const [studentButtonBorder, setStudentButtonBorder] = useState("20px");
+  const [studentButtonColor, setStudentButtonColor] = useState("#eee7df");
+  const [studentButtonText, setStudentButtonText] = useState("#2C384AF2");
+  const [showLanguageMenu, setShowLanguageMenu] = useState("none");
+
+  const ctx = useContext(ContextStorage);
+  const [languageText, setLanguageText] = useState(languageObj.en);
+
+  useEffect(() => {
+    switch (ctx.language) {
+      case "bu":
+        setLanguageText(languageObj.bu);
+        break;
+      default:
+        setLanguageText(languageObj.en);
+    }
+  }, [ctx.language]);
 
   const aboutHover = () => {
     setAboutHoverState({
@@ -46,16 +69,11 @@ const Navbar = () => {
     });
   };
 
-  const [showMobileMenu, setShowMobileMenu] = useState("none");
-  const [showStudentsNestedMenu, setShowStudentsNestedMenu] = useState("none");
-  const [hideOtherButtons, setHideOtherButtons] = useState("block");
-  const [studentButtonBorder, setStudentButtonBorder] = useState("20px");
-  const [studentButtonColor, setStudentButtonColor] = useState("#eee7df");
-  const [studentButtonText, setStudentButtonText] = useState("#2C384AF2");
-
+  //   function changes mobile menu state, which toggles its visibility
   const mobileMenu = () => {
     if (showMobileMenu === "none") {
       setShowMobileMenu("block");
+      setShowLanguageMenu("none");
     } else {
       setShowMobileMenu("none");
       setShowStudentsNestedMenu("none");
@@ -63,9 +81,11 @@ const Navbar = () => {
       setStudentButtonBorder("20px");
       setStudentButtonColor("#eee7df");
       setStudentButtonText("#2C384AF2");
+      setShowLanguageMenu("none");
     }
   };
 
+  //   function changes nested menu state, which toggles its visibility and appearance
   const showStudentsNested = () => {
     if (showStudentsNestedMenu === "none") {
       setShowStudentsNestedMenu("block");
@@ -79,6 +99,22 @@ const Navbar = () => {
       setStudentButtonBorder("20px");
       setStudentButtonColor("#eee7df");
       setStudentButtonText("#2C384AF2");
+    }
+  };
+
+  //   function changes language menu state, which toggles its visibility
+  const setLanguageMenu = (e) => {
+    //if statement as only span in the dropdown has id
+    if (e.target.id) {
+      //for language setting
+      ctx.setLanguage(e.target.id);
+    }
+    if (showLanguageMenu === "none") {
+      setShowLanguageMenu("block");
+      setShowMobileMenu("none");
+    } else {
+      setShowLanguageMenu("none");
+      setShowMobileMenu("none");
     }
   };
 
@@ -106,13 +142,15 @@ const Navbar = () => {
             }
             style={aboutHoverState}
           >
-            <span className="pr-1 font-semibold flex-1">About</span>
+            <span className="pr-1 font-semibold flex-1">
+              {languageText.about.a}
+            </span>
           </button>
           <ul
             id="menu"
             aria-hidden="true"
             className="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
-  origin-top min-w-32"
+            origin-top min-w-32"
             onMouseEnter={aboutHover}
             onMouseLeave={() => setAboutHoverState()}
           >
@@ -122,7 +160,7 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Who We Are</span>
+                <span className="pr-1 flex-1">{languageText.about.b}</span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -131,7 +169,7 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">History</span>
+                <span className="pr-1 flex-1">{languageText.about.c}</span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -140,7 +178,7 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Board of Directors</span>
+                <span className="pr-1 flex-1">{languageText.about.d}</span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -149,7 +187,7 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Management Team</span>
+                <span className="pr-1 flex-1">{languageText.about.e}</span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -158,7 +196,7 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Contact Us</span>
+                <span className="pr-1 flex-1">{languageText.about.f}</span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -167,13 +205,15 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Social Media</span>
+                <span className="pr-1 flex-1">{languageText.about.g}</span>
               </button>
             </li>
           </ul>
         </div>
+
+        {/* mobile menu only appears for width 768px and below */}
         <div className={styles.mobileMenu} style={{ display: showMobileMenu }}>
-          <div className={styles.mobileButton}>About Us</div>
+          <div className={styles.mobileButton}>{languageText.about.a}</div>
           <div
             className={styles.mobileButton}
             onClick={showStudentsNested}
@@ -184,7 +224,7 @@ const Navbar = () => {
             }}
           >
             {" "}
-            For Students
+            {languageText.forStudents.a}
           </div>
           <div
             className={styles.nestedButton}
@@ -195,7 +235,7 @@ const Navbar = () => {
               borderColor: "#f68121",
             }}
           >
-            Free Tips
+            {languageText.forStudents.b}
           </div>
           <Link
             to="/students/courses"
@@ -211,20 +251,20 @@ const Navbar = () => {
               }}
               onClick={mobileMenu}
             >
-              Courses
+              {languageText.forStudents.c}
             </div>
           </Link>
           <div
             className={styles.nestedButton}
             style={{ display: showStudentsNestedMenu }}
           >
-            Stories
+            {languageText.stories.a}
           </div>
           <div
             className={styles.mobileButton}
             style={{ display: hideOtherButtons }}
           >
-            For Employers
+            {languageText.forEmployers.a}
           </div>
           <Link
             to="/volunteers"
@@ -235,9 +275,33 @@ const Navbar = () => {
               style={{ display: hideOtherButtons }}
               onClick={mobileMenu}
             >
-              Get Involved
+              {languageText.getInvolved.a}
             </div>
           </Link>
+        </div>
+
+        {/* menu for language switching */}
+        <div
+          className={styles.languageMenu}
+          style={{ display: showLanguageMenu }}
+        >
+          <span className={styles.emoji} aria-label="sg-flag">
+            {" "}
+            🇸🇬
+          </span>
+          {/* change this onClick to toggle English language */}
+          <span id="en" onClick={setLanguageMenu}>
+            English
+          </span>
+          <br />
+          <span className={styles.emoji} aria-label="my-flag">
+            {" "}
+            🇲🇲
+          </span>
+          {/* change this onClick to toggle Burmese language */}
+          <span id="bu" onClick={setLanguageMenu}>
+            မြန်မာဘာသာ
+          </span>
         </div>
 
         {/* students tab */}
@@ -251,13 +315,15 @@ const Navbar = () => {
             }
             style={studentHoverState}
           >
-            <span className="pr-1 font-semibold flex-1">For Students</span>
+            <span className="pr-1 font-semibold flex-1">
+              {languageText.forStudents.a}
+            </span>
           </button>
           <ul
             id="menu"
             aria-hidden="true"
             className="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
- origin-top min-w-32"
+            origin-top min-w-32"
             onMouseEnter={studentHover}
             onMouseLeave={() => setStudentHoverState()}
           >
@@ -267,39 +333,23 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Free Tips</span>
+                <span className="pr-1 flex-1">
+                  {languageText.forStudents.b}
+                </span>
               </button>
               <ul
                 id="menu-lang"
                 aria-hidden="true"
                 className="bg-white border rounded-sm absolute top-0 right-0 
-  origin-top-left
-  min-w-32
-  "
+                origin-top-left min-w-32"
               >
                 <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
                   <button
                     aria-haspopup="true"
                     className="w-full text-center flex items-center outline-none focus:outline-none"
                   >
-                    <span className="pr-1 flex-1">Set Your Savings Goal</span>
-                  </button>
-                </li>
-                <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
-                  <button
-                    aria-haspopup="true"
-                    className="w-full text-center flex items-center outline-none focus:outline-none"
-                  >
-                    <span className="pr-1 flex-1">Track Your Spending</span>
-                  </button>
-                </li>
-                <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
-                  <button
-                    aria-haspopup="true"
-                    className="w-full text-center flex items-center outline-none focus:outline-none"
-                  >
                     <span className="pr-1 flex-1">
-                      Reflect on Your Spending
+                      {languageText.forStudents.freeTips.a}
                     </span>
                   </button>
                 </li>
@@ -308,7 +358,29 @@ const Navbar = () => {
                     aria-haspopup="true"
                     className="w-full text-center flex items-center outline-none focus:outline-none"
                   >
-                    <span className="pr-1 flex-1">One Simple Change</span>
+                    <span className="pr-1 flex-1">
+                      {languageText.forStudents.freeTips.b}
+                    </span>
+                  </button>
+                </li>
+                <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+                  <button
+                    aria-haspopup="true"
+                    className="w-full text-center flex items-center outline-none focus:outline-none"
+                  >
+                    <span className="pr-1 flex-1">
+                      {languageText.forStudents.freeTips.c}
+                    </span>
+                  </button>
+                </li>
+                <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+                  <button
+                    aria-haspopup="true"
+                    className="w-full text-center flex items-center outline-none focus:outline-none"
+                  >
+                    <span className="pr-1 flex-1">
+                      {languageText.forStudents.freeTips.d}
+                    </span>
                   </button>
                 </li>
               </ul>
@@ -323,16 +395,16 @@ const Navbar = () => {
                   aria-controls="menu-lang"
                   className="w-full text-center flex items-center outline-none focus:outline-none"
                 >
-                  <span className="pr-1 flex-1">Courses</span>
+                  <span className="pr-1 flex-1">
+                    {languageText.forStudents.c}
+                  </span>
                 </button>
               </Link>
               <ul
                 id="menu-lang"
                 aria-hidden="true"
                 className="bg-white border rounded-sm absolute top-0 right-0 
-  origin-top-left
-  min-w-32
-  "
+                origin-top-left min-w-32"
               >
                 <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
                   <Link
@@ -344,7 +416,9 @@ const Navbar = () => {
                       aria-controls="menu-lang-python"
                       className="w-full text-center flex items-center outline-none focus:outline-none"
                     >
-                      <span className="pr-1 flex-1">Financial Education</span>
+                      <span className="pr-1 flex-1">
+                        {languageText.forStudents.courses.a}
+                      </span>
                     </button>
                   </Link>
                 </li>
@@ -354,7 +428,9 @@ const Navbar = () => {
                     aria-controls="menu-lang-python"
                     className="w-full text-center flex items-center outline-none focus:outline-none"
                   >
-                    <span className="pr-1 flex-1">Improve Your English</span>
+                    <span className="pr-1 flex-1">
+                      {languageText.forStudents.courses.b}
+                    </span>
                   </button>
                 </li>
                 <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -363,7 +439,9 @@ const Navbar = () => {
                     aria-controls="menu-lang-python"
                     className="w-full text-center flex items-center outline-none focus:outline-none"
                   >
-                    <span className="pr-1 flex-1">Dealing With Stress</span>
+                    <span className="pr-1 flex-1">
+                      {languageText.forStudents.courses.c}
+                    </span>
                   </button>
                 </li>
               </ul>
@@ -378,7 +456,9 @@ const Navbar = () => {
                   aria-controls="menu-lang"
                   className="w-full text-center flex items-center outline-none focus:outline-none"
                 >
-                  <span className="pr-1 flex-1">Student Stories</span>
+                  <span className="pr-1 flex-1">
+                    {languageText.forStudents.d}
+                  </span>
                 </button>
               </Link>
             </li>
@@ -388,7 +468,9 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">The Aidha Experience</span>
+                <span className="pr-1 flex-1">
+                  {languageText.forStudents.e}
+                </span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -397,7 +479,9 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">FAQ</span>
+                <span className="pr-1 flex-1">
+                  {languageText.forStudents.f}
+                </span>
               </button>
             </li>
           </ul>
@@ -414,13 +498,15 @@ const Navbar = () => {
             }
             style={employerHoverState}
           >
-            <span className="pr-1 font-semibold flex-1">For Employers</span>
+            <span className="pr-1 font-semibold flex-1">
+              {languageText.forEmployers.a}
+            </span>
           </button>
           <ul
             id="menu"
             aria-hidden="true"
             className="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
-  origin-top min-w-32"
+            origin-top min-w-32"
             onMouseEnter={employerHover}
             onMouseLeave={() => setEmployerHoverState()}
           >
@@ -430,7 +516,9 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Enrol my Helper</span>
+                <span className="pr-1 flex-1">
+                  {languageText.forEmployers.b}
+                </span>
               </button>
             </li>
           </ul>
@@ -447,13 +535,15 @@ const Navbar = () => {
             }
             style={volunteerHoverState}
           >
-            <span className="pr-1 font-semibold flex-1">Get Involved</span>
+            <span className="pr-1 font-semibold flex-1">
+              {languageText.getInvolved.a}
+            </span>
           </button>
           <ul
             id="menu-lang"
             aria-hidden="true"
             className="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
- origin-top min-w-32"
+            origin-top min-w-32"
             onMouseEnter={volunteerHover}
             onMouseLeave={() => setVolunteerHoverState()}
           >
@@ -467,7 +557,9 @@ const Navbar = () => {
                   aria-controls="menu-lang"
                   className="w-full text-center flex items-center outline-none focus:outline-none"
                 >
-                  <span className="pr-1 flex-1">Our Reach & Impact</span>
+                  <span className="pr-1 flex-1">
+                    {languageText.getInvolved.b}
+                  </span>
                 </button>
               </Link>
             </li>
@@ -477,7 +569,9 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Our Partners</span>
+                <span className="pr-1 flex-1">
+                  {languageText.getInvolved.c}
+                </span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -490,7 +584,9 @@ const Navbar = () => {
                   aria-controls="menu-lang"
                   className="w-full text-center flex items-center outline-none focus:outline-none"
                 >
-                  <span className="pr-1 flex-1">Volunteer With Us</span>
+                  <span className="pr-1 flex-1">
+                    {languageText.getInvolved.d}
+                  </span>
                 </button>
               </Link>
             </li>
@@ -500,7 +596,9 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">Donate To Us</span>
+                <span className="pr-1 flex-1">
+                  {languageText.getInvolved.e}
+                </span>
               </button>
             </li>
             <li className="rounded-sm relative px-3 py-1 hover:bg-gray-100">
@@ -509,7 +607,9 @@ const Navbar = () => {
                 aria-controls="menu-lang"
                 className="w-full text-center flex items-center outline-none focus:outline-none"
               >
-                <span className="pr-1 flex-1">FAQ</span>
+                <span className="pr-1 flex-1">
+                  {languageText.getInvolved.f}
+                </span>
               </button>
             </li>
           </ul>
@@ -526,7 +626,11 @@ const Navbar = () => {
           >
             search
           </span>
-          <span className={styles.emoji} aria-label="sg-flag">
+          <span
+            className={styles.emoji}
+            aria-label="sg-flag"
+            onClick={setLanguageMenu}
+          >
             {" "}
             🇸🇬
           </span>

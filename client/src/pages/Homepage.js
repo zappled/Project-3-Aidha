@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { CCarousel } from "@coreui/react";
 import { CCarouselItem } from "@coreui/react";
 import { CCarouselCaption } from "@coreui/react";
@@ -15,22 +15,21 @@ import contentImgFour from ".././assets/homepage/0_4_ride_for_aidha.png";
 import contentImgFive from ".././assets/homepage/0_5_aidha_photography.png";
 import languageObj from "../assets/languages/pages/homepageLanguages";
 import { Link } from "react-router-dom";
+import ContextStorage from "../context/context";
 
 const Homepage = () => {
-  const [language, setLanguage] = useState("en");
+  const ctx = useContext(ContextStorage);
   const [languageText, setLanguageText] = useState(languageObj.en);
 
   useEffect(() => {
-    switch (language) {
+    switch (ctx.language) {
       case "bu":
-        console.log(languageObj.bu);
         setLanguageText(languageObj.bu);
         break;
       default:
-        console.log(languageObj.en);
         setLanguageText(languageObj.en);
     }
-  }, [language]);
+  }, [ctx.language]);
 
   return (
     <>
