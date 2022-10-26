@@ -28,6 +28,10 @@
   font-size: 14px;
 }
 
+.page_mobile_header {
+  display: none;
+}
+
 .page_header span {
   margin-left: 3.5vw;
 }
@@ -190,6 +194,22 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .page_header {
+    display: none;
+  }
+
+  .page_mobile_header {
+    display: block;
+    width: 100vw;
+    height: 10vw;
+    background-color: #f68121;
+    color: #ffffff;
+    line-height: 10vw;
+    font-weight: 700;
+    font-size: 5vw;
+    text-align: center;
+  }
+
   .banner {
     object-fit: cover;
     height: 35vh;
@@ -199,7 +219,7 @@
     font-size: 4.5vw;
     font-weight: 700;
     width: 65vw;
-    height: 30vw;
+    height: 35vw;
     background-color: #f68121;
     color: #ffffff;
     padding: 5px;
