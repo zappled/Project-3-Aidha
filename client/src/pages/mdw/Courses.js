@@ -105,7 +105,9 @@ const Courses = () => {
                 <img src={CoursesImg10} alt="computer-skills" />
               </div>
               <div className="content_button"></div>
-              <div className="button_label">Computer Skills</div>
+              <div className="button_label">
+                <span>Computer Skills</span>
+              </div>
               <div className="content_label">
                 <span>FREE | Course Mode · In-person</span>
               </div>
@@ -115,7 +117,9 @@ const Courses = () => {
                 <img src={CoursesImg11} alt="building-your-resilience" />
               </div>
               <div className="content_button"></div>
-              <div className="button_label">Building Your Resilience</div>
+              <div className="button_label">
+                <span>Building Your Resilience</span>
+              </div>
               <div className="content_label">
                 <span>FREE | Course Mode · Online</span>
               </div>
@@ -127,7 +131,9 @@ const Courses = () => {
                 <img src={CoursesImg2} alt="improve-english" />
               </div>
               <div className="content_button"></div>
-              <div className="button_label">Improve Your English</div>
+              <div className="button_label">
+                <span>Improve Your English</span>
+              </div>
               <div className="content_label">
                 <span>SUBSIDISED | Course Mode · Online</span>
               </div>
